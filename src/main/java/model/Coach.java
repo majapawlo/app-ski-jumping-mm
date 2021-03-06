@@ -1,7 +1,9 @@
 package model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(exclude ={"country","team"})
+@ToString(exclude ={"country","team"})
 public class Coach {
 
     @Id
@@ -19,6 +23,8 @@ public class Coach {
     private LocalDate dateOfBirth;
     @ManyToOne
     private Country country;
+    @OneToOne
+    private Team team;
 
 
 
