@@ -1,5 +1,6 @@
 import dao.SessionConnector;
 import model.*;
+import model.Record;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
