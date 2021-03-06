@@ -1,9 +1,6 @@
 package model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,6 +12,8 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(exclude = {"country","team","records","jumps"})
 @ToString(exclude ={"country","team","records","jumps"})
+@Builder
+@AllArgsConstructor
 public class Jumper {
 
     @Id
@@ -33,8 +32,10 @@ public class Jumper {
     private int winsOfWorldCup;
     private boolean isActive;
     @OneToMany(mappedBy = "jumper")
+    @Builder.Default
     private Set<Record> records = new HashSet<>();
     @OneToMany(mappedBy = "jumper")
+    @Builder.Default
     private Set<Jumps> jumps = new HashSet<>();
 
 

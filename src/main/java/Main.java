@@ -15,6 +15,9 @@ public class Main {
         JumperDao jumperDao = new JumperDaoImpl(factory);
         JumperService jumperService = new JumperService(jumperDao);
 
+        Jumper jumper1 = Jumper.builder().firstName("Adam").lastName("Małysz").build();
+        jumperService.saveJumper(jumper1);
+
 
     }
 }
