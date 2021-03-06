@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -21,9 +18,13 @@ public class Hill {
     //id, name, nation, city, hs_point, ks_point, records(length, date, jumper)
     private String name;
 
+    @ManyToOne
     private Country country;
 
     private String city;
+
+
+    private Competition competition;
 
     @Column(name = "hs_point")
     private int hsPoint;

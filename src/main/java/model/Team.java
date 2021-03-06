@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,9 +23,10 @@ public class Team {
     @GeneratedValue
     private Long id;
 
+    @OneToOne
     private Country country;
 
     private Set<Jumper> jumpers = new HashSet<>();
 
-    //private Set<Coach> coaches = new HashSet<>();
+    private Set<Coach> coaches = new HashSet<>();
 }
