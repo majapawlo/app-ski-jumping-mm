@@ -18,7 +18,7 @@ import java.util.Set;
 public class Competition {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDate date;
@@ -36,8 +36,8 @@ public class Competition {
 
     private boolean isFinished;
 
-    public void addJumps(Jumps jumps){
-        this.jumps.add(jumps);
-        jumps.setCompetition(this);
+    public void addJumps(Jumps jump){
+        jumps.add(jump);
+        jump.setCompetition(this);
     }
 }

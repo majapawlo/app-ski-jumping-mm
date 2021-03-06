@@ -1,6 +1,8 @@
 import dao.JumperDao;
 import dao.JumperDaoImpl;
+import model.Jumper;
 import org.hibernate.cfg.Configuration;
+import service.JumperService;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -11,6 +13,7 @@ public class Main {
         EntityManagerFactory factory = new Configuration().configure().buildSessionFactory();
 
         JumperDao jumperDao = new JumperDaoImpl(factory);
+        JumperService jumperService = new JumperService(jumperDao);
 
 
     }

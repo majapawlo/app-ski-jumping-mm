@@ -17,7 +17,7 @@ import java.util.Set;
 public class Team {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
