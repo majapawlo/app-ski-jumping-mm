@@ -6,12 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"country", "competition"})
-@ToString(exclude = {"country", "competition"})
+@EqualsAndHashCode(exclude = {"country", "competition", "records"})
+@ToString(exclude = {"country", "competition", "records"})
 public class Hill {
 
     @Id
@@ -24,6 +26,9 @@ public class Hill {
     private Country country;
 
     private String city;
+
+    @OneToMany(mappedBy = "hill")
+    private Set<Record> records = new HashSet<>();
 
     @OneToMany(mappedBy = "hill")
     private Competition competition;

@@ -7,12 +7,14 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"country", "hill"})
-@ToString(exclude = {"country", "hill"})
+@EqualsAndHashCode(exclude = {"country", "hill", "jumps"})
+@ToString(exclude = {"country", "hill", "jumps"})
 public class Competition {
 
     @Id
@@ -24,10 +26,13 @@ public class Competition {
     @ManyToOne
     private Country country;
 
-    private int year;
+    private String season;
 
     @ManyToOne
     private Hill hill;
+
+    @OneToMany(mappedBy = "competition")
+    private Set<Jumps> jumps = new HashSet<>();
 
     private boolean isFinished;
 }
