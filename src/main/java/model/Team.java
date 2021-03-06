@@ -5,18 +5,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"jumpers", "coaches"})
-@ToString(exclude = {"jumpers", "coaches"})
+@EqualsAndHashCode(exclude = {"jumpers", "coaches", "country"})
+@ToString(exclude = {"jumpers", "coaches", "country"})
 public class Team {
 
     @Id
@@ -26,7 +23,9 @@ public class Team {
     @OneToOne
     private Country country;
 
+    @OneToMany(mappedBy = "team")
     private Set<Jumper> jumpers = new HashSet<>();
 
+    @OneToOne(mappedBy = "team")
     private Set<Coach> coaches = new HashSet<>();
 }
