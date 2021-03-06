@@ -12,8 +12,8 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"jumpers", "coaches", "country"})
-@ToString(exclude = {"jumpers", "coaches", "country"})
+@EqualsAndHashCode(exclude = {"jumpers", "coach", "country"})
+@ToString(exclude = {"jumpers", "coach", "country"})
 public class Team {
 
     @Id
@@ -27,5 +27,5 @@ public class Team {
     private Set<Jumper> jumpers = new HashSet<>();
 
     @OneToOne(mappedBy = "team")
-    private Set<Coach> coaches = new HashSet<>();
+    private Coach coach;
 }

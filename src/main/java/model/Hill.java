@@ -12,8 +12,8 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"country", "competition", "records"})
-@ToString(exclude = {"country", "competition", "records"})
+@EqualsAndHashCode(exclude = {"country", "competitions", "records"})
+@ToString(exclude = {"country", "competitions", "records"})
 public class Hill {
 
     @Id
@@ -31,7 +31,7 @@ public class Hill {
     private Set<Record> records = new HashSet<>();
 
     @OneToMany(mappedBy = "hill")
-    private Competition competition;
+    private Set<Competition> competitions = new HashSet<>();
 
     @Column(name = "hs_point")
     private int hsPoint;
