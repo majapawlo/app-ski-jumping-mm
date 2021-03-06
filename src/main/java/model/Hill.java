@@ -39,4 +39,12 @@ public class Hill {
     @Column(name = "ks_point")
     private int ksPoint;
 
+    public void addRecord(Record record){
+        records.add(record);
+        record.setHill(this);
+    }
+    public void addCompetition(Competition competition){
+        competitions.add(competition);
+        competition.setHill(this);
+    }
 }

@@ -35,4 +35,9 @@ public class Competition {
     private Set<Jumps> jumps = new HashSet<>();
 
     private boolean isFinished;
+
+    public void addJumps(Jumps jumps){
+        this.jumps.add(jumps);
+        jumps.setCompetition(this);
+    }
 }

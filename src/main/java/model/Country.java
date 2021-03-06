@@ -47,4 +47,21 @@ public class Country {
     @OneToOne(mappedBy = "country")
     private Team team;
 
+    public void addJumper(Jumper jumper){
+        jumpers.add(jumper);
+        jumper.setCountry(this);
+    }
+    public void addCoach(Coach coach){
+        coaches.add(coach);
+        coach.setCountry(this);
+    }
+    public void addCompetition(Competition competition){
+        competitions.add(competition);
+        competition.setCountry(this);
+    }
+    public void addHill(Hill hill){
+        hills.add(hill);
+        hill.setCountry(this);
+    }
+
 }

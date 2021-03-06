@@ -28,4 +28,9 @@ public class Team {
 
     @OneToOne(mappedBy = "team")
     private Coach coach;
+
+    public void addJumper(Jumper jumper){
+        jumpers.add(jumper);
+        jumper.setTeam(this);
+    }
 }
