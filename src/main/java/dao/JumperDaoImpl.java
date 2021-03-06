@@ -29,4 +29,9 @@ public class JumperDaoImpl implements JumperDao {
         entityManager.close();
 
     }
+
+    @Override
+    public boolean isJumperPresent(Jumper jumper) {
+        return false;
+    }
 }
