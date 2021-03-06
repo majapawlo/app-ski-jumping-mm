@@ -5,10 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,14 +32,19 @@ public class Country {
 
     private int population;
 
+    @OneToMany(mappedBy = "country")
     private Set<Jumper> jumpers = new HashSet<>();
 
-    //private Set<Coach> coaches = new HashSet<>();
+    @OneToMany(mappedBy = "country")
+    private Set<Coach> coaches = new HashSet<>();
 
+    @OneToMany(mappedBy = "country")
     private Set<Hill> hills = new HashSet<>();
 
+    @OneToMany(mappedBy = "country") //
     private Set<Competition> competitions = new HashSet<>();
 
+    @OneToOne(mappedBy = "country")
     private Team team;
 
 }

@@ -5,9 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -23,10 +21,12 @@ public class Competition {
 
     private LocalDate date;
 
+    @ManyToOne
     private Country country;
 
     private int year;
 
+    @ManyToOne
     private Hill hill;
 
     private boolean isFinished;
