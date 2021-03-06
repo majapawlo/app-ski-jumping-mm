@@ -15,6 +15,13 @@
 
         <mapping class="model.Jumps"/>
         <mapping class="model.Record"/>
+        <mapping class="model.Competition"/>
+        <mapping class="model.Hill"/>
+        <mapping class="model.Jumper"/>
+        <mapping class="model.Country"/>
+        <mapping class="model.Team"/>
+        <mapping class="model.Coach"/>
+
 
 
 
