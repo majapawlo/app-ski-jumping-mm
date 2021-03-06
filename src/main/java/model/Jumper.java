@@ -38,6 +38,18 @@ public class Jumper {
     private Set<Jumps> jumps = new HashSet<>();
 
 
+    public void addRecord(Record record){
+        records.add(record);
+        record.setJumper(this);
+    }
+    public void addJump(Jumps jump){
+        jumps.add(jump);
+        jump.setJumper(this);
+    }
+
+
+
+
 
 
 
