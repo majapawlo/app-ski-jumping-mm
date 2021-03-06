@@ -1,9 +1,6 @@
 package model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +11,8 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"jumpers", "coaches", "hills", "competitions", "team"})
 @ToString(exclude = {"jumpers", "coaches", "hills", "competitions", "team"})
+@Builder
+@AllArgsConstructor
 public class Country {
 
     @Id
@@ -33,15 +32,19 @@ public class Country {
     private int population;
 
     @OneToMany(mappedBy = "country")
+    @Builder.Default
     private Set<Jumper> jumpers = new HashSet<>();
 
     @OneToMany(mappedBy = "country")
+    @Builder.Default
     private Set<Coach> coaches = new HashSet<>();
 
     @OneToMany(mappedBy = "country")
+    @Builder.Default
     private Set<Hill> hills = new HashSet<>();
 
-    @OneToMany(mappedBy = "country") //
+    @OneToMany(mappedBy = "country")
+    @Builder.Default
     private Set<Competition> competitions = new HashSet<>();
 
     @OneToOne(mappedBy = "country")

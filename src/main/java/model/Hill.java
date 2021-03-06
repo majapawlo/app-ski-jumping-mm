@@ -1,9 +1,6 @@
 package model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +11,8 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"country", "competitions", "records"})
 @ToString(exclude = {"country", "competitions", "records"})
+@Builder
+@AllArgsConstructor
 public class Hill {
 
     @Id
@@ -28,9 +27,11 @@ public class Hill {
     private String city;
 
     @OneToMany(mappedBy = "hill")
+    @Builder.Default
     private Set<Record> records = new HashSet<>();
 
     @OneToMany(mappedBy = "hill")
+    @Builder.Default
     private Set<Competition> competitions = new HashSet<>();
 
     @Column(name = "hs_point")
