@@ -16,6 +16,7 @@ public class Main {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
+
         transaction.commit();
         entityManager.close();
 
