@@ -1,25 +1,17 @@
-import dao.SessionConnector;
-import model.*;
-import model.Record;
+import dao.JumperDao;
+import dao.JumperDaoImpl;
+import org.hibernate.cfg.Configuration;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory factory = SessionConnector.createFactory(Country.class, Jumper.class, Jumps.class,
-                Coach.class, Hill.class, Competition.class, Record.class, Team.class);
+        EntityManagerFactory factory = new Configuration().configure().buildSessionFactory();
 
-        EntityManager entityManager = factory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
+        JumperDao jumperDao = new JumperDaoImpl(factory);
 
-
-        transaction.commit();
-        entityManager.close();
 
     }
 }
