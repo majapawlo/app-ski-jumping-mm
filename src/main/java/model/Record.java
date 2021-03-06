@@ -1,9 +1,6 @@
 package model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,6 +10,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"hill","jumper"})
 @ToString(exclude = {"hill","jumper"})
+@Builder
+@AllArgsConstructor
 public class Record {
 
     @Id
