@@ -20,7 +20,7 @@ public class Record {
     private LocalDate startDate;
     private double length;
     private LocalDate dateOdEnd;
-    //tu dodać pole Jumper
+    private Jumper jumper;
 
 
 

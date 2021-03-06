@@ -23,7 +23,7 @@ public class Jumps {
     private double secondRoundLength;
     private double secondRoundNote;
     private double secondRoundWindPoints;
-    //dodać pole Competition
+    private Competition competition;
     private int positionInWorldCup;
 
 

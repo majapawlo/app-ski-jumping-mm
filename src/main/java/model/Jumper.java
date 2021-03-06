@@ -3,10 +3,7 @@ package model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -23,8 +20,9 @@ public class Jumper {
     private int weight;
     private LocalDate dateOfBirth;
     private LocalDate debutDate;
-    //tu dodać klasę Country jako pole
-    //tu dodać klasę Team jako pole
+    @ManyToOne
+    private Country country;
+    private Team team;
     private int winsOfWorldCup;
     private boolean isActive;
 
