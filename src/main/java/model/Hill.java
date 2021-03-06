@@ -3,19 +3,21 @@ package model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = "country")
+@EqualsAndHashCode(exclude = {"country", "competition"})
+@ToString(exclude = {"country", "competition"})
 public class Hill {
 
     @Id
     @GeneratedValue
     private Long id;
-    //id, name, nation, city, hs_point, ks_point, records(length, date, jumper)
+
     private String name;
 
     @ManyToOne
@@ -23,7 +25,7 @@ public class Hill {
 
     private String city;
 
-
+    @OneToMany(mappedBy = "hill")
     private Competition competition;
 
     @Column(name = "hs_point")
