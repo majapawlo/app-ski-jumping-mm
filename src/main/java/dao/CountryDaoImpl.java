@@ -1,36 +1,33 @@
 package dao;
 
-import model.Coach;
+import model.Country;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-public class CoachDaoImpl implements CoachDao{
+public class CountryDaoImpl implements CountryDao{
 
-    private EntityManagerFactory factory;
+    private final EntityManagerFactory factory;
 
-    public CoachDaoImpl(EntityManagerFactory factory) {
+    public CountryDaoImpl(EntityManagerFactory factory) {
         this.factory = factory;
     }
 
     @Override
-    public void save(Coach coach) {
-
+    public void save(Country country) {
         EntityManager entityManager = factory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        entityManager.persist(coach);
+        entityManager.persist(country);
 
         transaction.commit();
         entityManager.close();
-
     }
+
     @Override
-    public boolean isCoachPresent(Coach coach){
+    public boolean isCountryPresent(Country country) {
         return false;
     }
-
-
 }
