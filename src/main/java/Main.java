@@ -19,49 +19,8 @@ public class Main {
 
         EntityManagerFactory factory = new Configuration().configure().buildSessionFactory();
 
-        JumperDao jumperDao = new JumperDaoImpl(factory);
-        JumperService jumperService = new JumperService(jumperDao);
-        CountryDao countryDao = new CountryDaoImpl(factory);
-        CountryService countryService = new CountryService(countryDao);
-        CoachDao coachDao = new CoachDaoImpl(factory);
-        CoachService coachService = new CoachService(coachDao);
-        TeamDao teamDao = new TeamDaoImpl(factory);
-        TeamService teamService = new TeamService(teamDao);
+        DbFiller.fillDb(factory);
 
-        Country country = Country.builder()
-                .continent("Europe")
-                .name("Poland")
-                .population(38386000)
-                .surfaceArea(312696)
-                .isoCode("PL")
-                .build();
-
-        countryService.saveCountry(country);
-
-        Team team = Team.builder()
-                .country(country)
-                .name("Team Poland")
-                .build();
-
-        teamService.saveTeam(team);
-
-        Jumper jumper1 = Jumper.builder()
-                .firstName("Adam")
-                .lastName("Małysz")
-                .country(country)
-                .team(team)
-                .build();
-
-        jumperService.saveJumper(jumper1);
-
-        Coach coach = Coach.builder()
-                .firstName("Michal")
-                .lastName("Dolezal")
-                .country(country)
-                .team(team)
-                .build();
-
-        coachService.saveCoach(coach);
 
         for (int i = 0; ; i++){
             System.out.println("nr akcji");
