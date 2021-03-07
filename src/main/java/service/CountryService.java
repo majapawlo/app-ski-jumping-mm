@@ -17,4 +17,11 @@ public class CountryService {
         }
     }
 
+    public Country findCountry(Long id) {
+        if (countryDao.find(id) != null) {
+            return countryDao.find(id);
+        }
+        return new Country();
+    }
+
 }
