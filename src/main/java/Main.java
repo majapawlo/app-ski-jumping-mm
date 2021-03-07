@@ -18,8 +18,17 @@ public class Main {
     public static void main(String[] args) {
 
         EntityManagerFactory factory = new Configuration().configure().buildSessionFactory();
+        JumperDao jumperDao = new JumperDaoImpl(factory);
+        JumperService jumperService = new JumperService(jumperDao);
+        CountryDao countryDao = new CountryDaoImpl(factory);
+        CountryService countryService = new CountryService(countryDao);
+        CoachDao coachDao = new CoachDaoImpl(factory);
+        CoachService coachService = new CoachService(coachDao);
+        TeamDao teamDao = new TeamDaoImpl(factory);
+        TeamService teamService = new TeamService(teamDao);
 
         DbFiller.fillDb(factory);
+
 
 
         for (int i = 0; ; i++){
