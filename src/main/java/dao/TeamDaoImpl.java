@@ -38,7 +38,7 @@ public class TeamDaoImpl implements TeamDao{
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        Team team = entityManager.getReference(Team.class, id);
+        Team team = entityManager.find(Team.class, id);
 
         transaction.commit();
         entityManager.close();

@@ -5,6 +5,7 @@ import model.Country;
 import model.Jumper;
 import model.Team;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.sql.HSQLCaseFragment;
 import service.CoachService;
 import service.CountryService;
 import service.JumperService;
@@ -29,16 +30,19 @@ public class Main {
 
         DbFiller.fillDb(jumperService,countryService,coachService,teamService);
 
-
+        ConsoleController consoleController = new ConsoleController(coachService,countryService,jumperService,teamService);
 
         for (int i = 0; ; i++){
             System.out.println("nr akcji");
             int number = new Scanner(System.in).nextInt();
             if (number == 1){
-                ConsoleController consoleController = new ConsoleController(coachService,countryService,jumperService,teamService);
+
                 consoleController.saveJumper();
             } else if (number == 2) {
-                break;
+                System.out.println("Select jumper to edit (id): ");
+                long id = new Scanner(System.in).nextLong();
+                consoleController.editJumper(id);
+
             }
         }
 
