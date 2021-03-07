@@ -1,5 +1,6 @@
 package dao;
 
+import model.Country;
 import model.Jumper;
 
 import javax.persistence.EntityManager;
@@ -31,6 +32,46 @@ public class JumperDaoImpl implements JumperDao {
 
     @Override
     public boolean isJumperPresent(Jumper jumper) {
-        return false;
+        if (jumper.getId() == null){
+            return false;
+        }
+        return find(jumper.getId()) != null;
     }
+
+    @Override
+    public void edit(Jumper jumper, Long id) {
+        EntityManager entityManager = factory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        entityManager.merge(jumper);
+//        Jumper jumperToEdit = find(id);
+//        jumperToEdit.setFirstName(jumper.getFirstName());
+//        jumperToEdit.setLastName(jumper.getLastName());
+//        jumperToEdit.setDateOfBirth(jumper.getDateOfBirth());
+//        jumperToEdit.setWeight(jumper.getWeight());
+//        jumperToEdit.setTeam(jumper.getTeam());
+//        jumperToEdit.setCountry(jumper.getCountry());
+//        jumperToEdit.setWinsOfWorldCup(jumper.getWinsOfWorldCup());
+//        jumperToEdit.setActive(jumper.isActive());
+
+        transaction.commit();
+        entityManager.close();
+    }
+
+    @Override
+    public Jumper find(Long id) {
+        EntityManager entityManager = factory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Jumper jumper = entityManager.find(Jumper.class, id);
+
+        transaction.commit();
+        entityManager.close();
+
+        return jumper;
+    }
+
+
 }

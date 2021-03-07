@@ -37,7 +37,7 @@ public class CountryDaoImpl implements CountryDao{
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        Country country = entityManager.getReference(Country.class, id);
+        Country country = entityManager.find(Country.class, id);
 
         transaction.commit();
         entityManager.close();
