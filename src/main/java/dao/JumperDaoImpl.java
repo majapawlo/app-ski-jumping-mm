@@ -21,9 +21,8 @@ public class JumperDaoImpl implements JumperDao {
         transaction.begin();
 
         entityManager.persist(jumper);
-
-
-
+        jumper.getCountry().addJumper(jumper);
+        jumper.getTeam().addJumper(jumper);
 
         transaction.commit();
         entityManager.close();

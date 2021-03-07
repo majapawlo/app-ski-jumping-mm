@@ -1,6 +1,7 @@
 package dao;
 
 import model.Coach;
+import model.Country;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,6 +23,8 @@ public class CoachDaoImpl implements CoachDao{
         transaction.begin();
 
         entityManager.persist(coach);
+        coach.getCountry().addCoach(coach);
+        coach.getTeam().setCoach(coach);
 
         transaction.commit();
         entityManager.close();
