@@ -27,7 +27,7 @@ public class Main {
         TeamDao teamDao = new TeamDaoImpl(factory);
         TeamService teamService = new TeamService(teamDao);
 
-        DbFiller.fillDb(factory);
+        DbFiller.fillDb(jumperService,countryService,coachService,teamService);
 
 
 

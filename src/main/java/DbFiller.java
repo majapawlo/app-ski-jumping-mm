@@ -13,16 +13,7 @@ import java.time.LocalDate;
 
 public class DbFiller {
 
-    public static void fillDb(EntityManagerFactory factory){
-
-        JumperDao jumperDao = new JumperDaoImpl(factory);
-        JumperService jumperService = new JumperService(jumperDao);
-        CountryDao countryDao = new CountryDaoImpl(factory);
-        CountryService countryService = new CountryService(countryDao);
-        CoachDao coachDao = new CoachDaoImpl(factory);
-        CoachService coachService = new CoachService(coachDao);
-        TeamDao teamDao = new TeamDaoImpl(factory);
-        TeamService teamService = new TeamService(teamDao);
+    public static void fillDb(JumperService jumperService, CountryService countryService, CoachService coachService, TeamService teamService){
 
         Country countryAut = Country.builder()
                 .continent("Europe")
