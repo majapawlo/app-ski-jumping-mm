@@ -30,4 +30,18 @@ public class CountryDaoImpl implements CountryDao{
     public boolean isCountryPresent(Country country) {
         return false;
     }
+
+    @Override
+    public Country find(Long id) {
+        EntityManager entityManager = factory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Country country = entityManager.getReference(Country.class, id);
+
+        transaction.commit();
+        entityManager.close();
+
+        return country;
+    }
 }

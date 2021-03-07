@@ -16,4 +16,12 @@ public class TeamService {
             teamDao.save(team);
         }
     }
+
+    public Team findTeam(Long id){
+        if (teamDao.find(id) != null) {
+            return teamDao.find(id);
+        }
+        return new Team();
+    }
+
 }

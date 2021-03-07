@@ -31,4 +31,18 @@ public class TeamDaoImpl implements TeamDao{
     public boolean isTeamPresent(Team team) {
         return false;
     }
+
+    @Override
+    public Team find(Long id) {
+        EntityManager entityManager = factory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Team team = entityManager.getReference(Team.class, id);
+
+        transaction.commit();
+        entityManager.close();
+
+        return team;
+    }
 }
