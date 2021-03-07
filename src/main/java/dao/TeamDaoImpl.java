@@ -21,6 +21,7 @@ public class TeamDaoImpl implements TeamDao{
         transaction.begin();
 
         entityManager.persist(team);
+        team.getCountry().setTeam(team);
 
         transaction.commit();
         entityManager.close();

@@ -47,6 +47,7 @@ public class Main {
                 .firstName("Adam")
                 .lastName("Małysz")
                 .country(country)
+                .team(team)
                 .build();
 
         jumperService.saveJumper(jumper1);
