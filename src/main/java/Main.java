@@ -55,6 +55,7 @@ public class Main {
                 .firstName("Michal")
                 .lastName("Dolezal")
                 .country(country)
+                .team(team)
                 .build();
 
         coachService.saveCoach(coach);
