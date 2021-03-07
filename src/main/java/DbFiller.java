@@ -64,6 +64,7 @@ public class DbFiller {
                 .dateOfBirth(LocalDate.of(1987,05,25))
                 .country(countryPol)
                 .team(teamPoland)
+                .isActive(true)
                 .debutDate(LocalDate.of(2004,01,17))
                 .build();
 
@@ -72,7 +73,8 @@ public class DbFiller {
                 .lastName("Kraft")
                 .dateOfBirth(LocalDate.of(1993,05,13))
                 .country(countryAut)
-                .team(teamPoland)
+                .team(teamAustria)
+                .isActive(true)
                 .debutDate(LocalDate.of(2012,01,06))
                 .build();
 
